@@ -1,5 +1,4 @@
-// import WebSocket from "ws"
-import SocketIO from "socket.io"
+import WebSocket from "ws"
 import express from "express"
 import http from "http"
 
@@ -15,7 +14,7 @@ app.get("/",(req, res)=>{
 
 
 const server=http.createServer(app);
-const io=SocketIO(server);
+const wss= new WebSocket.Server({server});
 server.listen(4000,()=>{
     console.log("Start Server 3000!!");
 });
@@ -32,8 +31,8 @@ wss.on("connection",(socket)=>{                     // 자신에게 밖에 보�
 });
 */
 
-/*                                                  // ws를 이용한 websocket 통신
-const wss= new WebSocket.Server({server});
+                                                  // ws를 이용한 websocket 통신
+
 const sockets=[];
 wss.on("connection",(socket)=>{                     
   sockets.push(socket);
@@ -64,4 +63,4 @@ wss.on("connection",(socket)=>{
   });
   console.log("Connected from Browser");
 });
-*/
+
